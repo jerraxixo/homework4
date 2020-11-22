@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class Showtime implements Runnable {
     private static final Object lock = new Object();
     private LinkedHashSet<Seat> freeSeats = new LinkedHashSet<Seat>();
-    private LinkedHashSet<Seat> bookedSeats = new LinkedHashSet<Seat>();
     private int rows;
     private int seats;
 
@@ -27,7 +26,6 @@ public class Showtime implements Runnable {
         for (Seat freeSeat : freeSeats) {
             if (seat.getRow() == freeSeat.getRow() && seat.getSeat() == freeSeat.getSeat()) {
                 freeSeats.remove(freeSeat);
-                bookedSeats.add(seat);
                 result = true;
                 break;
             }
